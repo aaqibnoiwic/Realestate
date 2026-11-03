@@ -146,11 +146,19 @@ svg {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  justify-content: center;
   font-family: Georgia, serif;
   font-size: 23px;
   letter-spacing: 3px;
   line-height: 1.3;
+}
+.brand-logo {
+  display: block;
+  height: 84px;
+  width: auto;
+  max-width: clamp(250px, 32vw, 420px);
+  object-fit: contain;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
 }
 .brand-sub {
   display: block;

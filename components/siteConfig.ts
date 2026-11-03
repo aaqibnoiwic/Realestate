@@ -1,5 +1,5 @@
 export const siteConfig = {
-  brand: "Verdant Estates",
+  brand: "Book Your Legacy",
   phone: "+91 98765 43210",
   email: "hello@verdantestates.example",
   social: {

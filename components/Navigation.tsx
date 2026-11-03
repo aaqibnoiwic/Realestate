@@ -3,13 +3,12 @@ import { useState } from "react";
 import { Icon } from "./Icon";
 export function Brand() {
   return (
-    <a href="#home" className="brand" aria-label="Verdant Estates home">
-      <span className="brand-mark">
-        V<span>∧</span>
-      </span>
-      <span>
-        VERDANT<span className="brand-sub">E S T A T E S</span>
-      </span>
+    <a href="#home" className="brand" aria-label="Book Your Legacy home">
+      <img
+        src="/images/logo.png"
+        alt="Book Your Legacy logo"
+        className="brand-logo"
+      />
     </a>
   );
 }
