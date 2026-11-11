@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Navigation, Brand } from "@/components/Navigation";
 import { Icon } from "@/components/Icon";
 import { InquiryForm } from "@/components/InquiryForm";
@@ -38,8 +39,8 @@ export default function Home() {
               <a className="button button-gold" href="#projects">
                 Explore our projects <Icon name="arrow-up" size={18} />
               </a>
-              <a className="text-link" href="#about">
-                The Verdant approach{" "}
+              <a className="text-link" href="#expertise">
+                Explore our expertise{" "}
                 <span className="circle-icon">
                   <Icon name="arrow" size={17} />
                 </span>
@@ -51,7 +52,7 @@ export default function Home() {
             <div>
               Noida <i /> Delhi <i /> Gurgaon <i /> Jaipur <i /> UAE
             </div>
-            <a href="#about" aria-label="Scroll to our story">
+            <a href="#expertise" aria-label="Scroll to our expertise">
               SCROLL TO DISCOVER <span>↓</span>
             </a>
           </div>
@@ -68,20 +69,23 @@ export default function Home() {
               <div className="marquee-track">
                 {[0, 1].map((n) => (
                   <div className="marquee-set" key={n} aria-hidden={n === 1}>
-                    {["GODREJ", "DLF", "EMAAR", "SOBHA", "PRESTIGE"].map(
-                      (name) => (
-                        <span key={name}>
-                          {name}
-                          <small>
-                            {name === "GODREJ"
-                              ? "PROPERTIES"
-                              : name === "EMAAR"
-                                ? "PROPERTIES"
-                                : "REAL ESTATE"}
-                          </small>
-                        </span>
-                      ),
-                    )}
+                    {[
+                      ["Godrej Properties", "godrej.svg"],
+                      ["DLF", "dlf.svg"],
+                      ["Emaar", "emaar.svg"],
+                      ["Sobha", "sobha.png"],
+                      ["Prestige Group", "prestige.svg"],
+                    ].map(([name, file]) => (
+                      <span className="developer-logo" key={name}>
+                        <img
+                          src={`/developers/${file}`}
+                          alt={n === 0 ? `${name} logo` : ""}
+                          width={160}
+                          height={72}
+                          decoding="async"
+                        />
+                      </span>
+                    ))}
                   </div>
                 ))}
               </div>
@@ -90,70 +94,6 @@ export default function Home() {
           <p className="strip-note">
             *Industry references only. No affiliation or partnership is claimed.
           </p>
-        </section>
-        <section className="section about container" id="about">
-          <div className="about-visual">
-            <img
-              src={photos.interior}
-              alt="Thoughtfully designed residence with warm natural finishes"
-              loading="lazy"
-            />
-            <div className="image-caption">
-              <span className="small-star">✳</span>
-              <span>
-                A considered approach.
-                <br />
-                <strong>A lasting relationship.</strong>
-              </span>
-            </div>
-            <span className="vertical-caption">
-              THE ART OF FINDING YOUR PLACE
-            </span>
-          </div>
-          <div className="about-copy">
-            <p className="eyebrow">01 / THE VERDANT PHILOSOPHY</p>
-            <h2>
-              More than property.
-              <br />
-              <em>A perspective.</em>
-            </h2>
-            <p className="lead">
-              Great real estate decisions start with a conversation, not a
-              catalogue.
-            </p>
-            <p>
-              Verdant Estates is a proposed identity for a real estate
-              consultancy connecting people with land, homes and commercial
-              opportunities. Our approach puts your aspirations at the centre of
-              every search.
-            </p>
-            <p>
-              From a farm retreat near Jaipur to a residence in the UAE, the
-              vision is simple: local understanding, thoughtful guidance and a
-              relationship that extends beyond the transaction.
-            </p>
-            <div className="values">
-              <div>
-                <Icon name="check" />
-                <span>Personalised advisory</span>
-              </div>
-              <div>
-                <Icon name="check" />
-                <span>Local market perspective</span>
-              </div>
-              <div>
-                <Icon name="check" />
-                <span>Long-term thinking</span>
-              </div>
-              <div>
-                <Icon name="check" />
-                <span>India & international reach</span>
-              </div>
-            </div>
-            <a className="underlined-link" href="#contact">
-              Let’s start a conversation <Icon name="arrow-up" size={18} />
-            </a>
-          </div>
         </section>
         <section className="expertise section" id="expertise">
           <div className="container">
@@ -286,14 +226,26 @@ export default function Home() {
               ["Zaid Bhai", "ZB", "Residential & international advisory"],
             ].map(([name, initials, focus]) => (
               <article className="founder" key={name}>
-                <div
-                  className="founder-portrait"
-                  role="img"
-                  aria-label={`Portrait placeholder for ${name}`}
-                >
-                  <span>{initials}</span>
-                  <small>PORTRAIT TO FOLLOW</small>
-                </div>
+                {name === "Faisal Bhai" ? (
+                  <div className="founder-portrait founder-portrait-photo">
+                    <Image
+                      src="/founders/faisal-bhai.jpeg"
+                      alt="Faisal Bhai, co-founder"
+                      fill
+                      sizes="(max-width: 760px) 140px, (max-width: 1050px) 130px, 180px"
+                      className="founder-photo"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="founder-portrait"
+                    role="img"
+                    aria-label={`Portrait placeholder for ${name}`}
+                  >
+                    <span>{initials}</span>
+                    <small>PORTRAIT TO FOLLOW</small>
+                  </div>
+                )}
                 <div>
                   <p className="eyebrow">CO-FOUNDER</p>
                   <h3>{name}</h3>
@@ -353,12 +305,18 @@ export default function Home() {
               {(["whatsapp", "instagram", "youtube"] as const).map((s) => (
                 <a
                   key={s}
+                  className={`social-brand social-brand-${s}`}
                   href={siteConfig.social[s]}
                   aria-label={`${s} (placeholder profile)`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Icon name={s} />
+                  <img
+                    src={`/social/${s}.svg`}
+                    alt=""
+                    width={26}
+                    height={26}
+                  />
                 </a>
               ))}
             </div>
@@ -375,7 +333,6 @@ export default function Home() {
             </div>
             <div>
               <span>EXPLORE</span>
-              <a href="#about">Our story</a>
               <a href="#expertise">Our expertise</a>
               <a href="#founders">Our founders</a>
             </div>

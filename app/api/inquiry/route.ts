@@ -5,7 +5,6 @@ type Inquiry = {
   email?: unknown;
   phone?: unknown;
   interest?: unknown;
-  message?: unknown;
 };
 
 function isText(value: unknown): value is string {
@@ -29,13 +28,12 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  const { name, email, phone, interest, message } = data;
+  const { name, email, phone, interest } = data;
   if (
     !isText(name) ||
     !isText(email) ||
     !isText(phone) ||
-    !isText(interest) ||
-    !isText(message)
+    !isText(interest)
   ) {
     return NextResponse.json(
       { message: "Please complete all enquiry fields." },
@@ -47,7 +45,6 @@ export async function POST(request: Request) {
   const normalizedEmail = email.trim();
   const normalizedPhone = phone.trim();
   const normalizedInterest = interest.trim();
-  const normalizedMessage = message.trim();
   const digits = normalizedPhone.replace(/\D/g, "");
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const allowedInterests = new Set([
@@ -86,12 +83,6 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  if (normalizedMessage.length < 10 || normalizedMessage.length > 2000) {
-    return NextResponse.json(
-      { message: "Please enter a message between 10 and 2,000 characters." },
-      { status: 400 },
-    );
-  }
 
   const apiKey = process.env.RESEND_API_KEY;
   const recipient = process.env.CONTACT_EMAIL;
@@ -111,8 +102,6 @@ export async function POST(request: Request) {
     `Email: ${normalizedEmail}`,
     `Phone: ${normalizedPhone}`,
     `Interest: ${normalizedInterest}`,
-    "",
-    normalizedMessage,
   ].join("\n");
 
   try {

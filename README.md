@@ -32,7 +32,7 @@ Restart the server after changing environment variables. The form posts to `/api
 - `app/layout.tsx`: SEO metadata.
 - `app/globals.css`: design tokens, typography and responsive styles.
 
-No logo, founder photographs, verified project data, years of experience or partner agreements were provided. Founder portraits are neutral initials, listings and delivered work are marked as samples, and developer names are text-only industry references with no affiliation claim. Replace them with approved content before presenting this as a live business site. Images are illustrative Unsplash photographs, not verified property photography. Fonts load from Google Fonts with local fallback fonts.
+No logo, founder photographs, verified project data, years of experience or partner agreements were provided. Founder portraits are neutral initials, listings and delivered work are marked as samples, and developer logos are industry references with no affiliation claim (official asset sources are recorded in `public/developers/SOURCES.md`). Replace them with approved content before presenting this as a live business site. Images are illustrative Unsplash photographs, not verified property photography. Fonts load from Google Fonts with local fallback fonts.
 
 ## Production
 

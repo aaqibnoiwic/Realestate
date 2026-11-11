@@ -97,17 +97,6 @@ export function InquiryForm() {
             <option>Property visit</option>
           </select>
         </label>
-        <label className="field field-wide">
-          <span>Tell us about your plans</span>
-          <textarea
-            name="message"
-            placeholder="Share a little about the property or visit you have in mind…"
-            rows={4}
-            required
-            minLength={10}
-            maxLength={2000}
-          />
-        </label>
       </div>
       <div className="form-submit-row">
         <button

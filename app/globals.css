@@ -345,22 +345,49 @@ h1 {
 .marquee-set {
   display: flex;
   align-items: center;
-  gap: 75px;
-  padding-right: 75px;
+  gap: 24px;
+  padding-right: 24px;
 }
-.marquee-set > span {
-  font-family: Georgia, serif;
-  font-size: 27px;
-  letter-spacing: 2px;
-  color: #566157;
-  min-width: 110px;
-  text-align: center;
+.developer-logo {
+  --logo-accent: #25896d;
+  --logo-tint: #d8f0e4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 180px;
+  width: 180px;
+  height: 96px;
+  padding: 12px 18px;
+  border: 1px solid color-mix(in srgb, var(--logo-accent) 22%, transparent);
+  border-top: 3px solid var(--logo-accent);
+  border-radius: 10px;
+  background: linear-gradient(135deg, #fffdf7, var(--logo-tint));
+  transition: background .2s ease, border-color .2s ease;
 }
-.marquee-set small {
-  display: block;
-  font: 7px Arial;
-  letter-spacing: 4px;
-  margin-top: 3px;
+.developer-logo:nth-child(2) {
+  --logo-accent: #416fb5;
+  --logo-tint: #dae7fa;
+}
+.developer-logo:nth-child(3) {
+  --logo-accent: #b28a35;
+  --logo-tint: #f5e5b8;
+}
+.developer-logo:nth-child(4) {
+  --logo-accent: #a65973;
+  --logo-tint: #f3dce5;
+}
+.developer-logo:nth-child(5) {
+  --logo-accent: #7a63aa;
+  --logo-tint: #e6def6;
+}
+.developer-logo:hover {
+  border-color: var(--logo-accent);
+  background: var(--logo-tint);
+}
+.developer-logo img {
+  width: 100%;
+  height: 72px;
+  object-fit: contain;
 }
 .strip-note {
   text-align: center;
@@ -706,6 +733,13 @@ h1 {
     serif;
   color: #536c55;
 }
+.founder-portrait-photo::before {
+  content: none;
+}
+.founder-photo {
+  object-fit: cover;
+  object-position: 52% 50%;
+}
 .founder-portrait small {
   font-size: 7px;
   letter-spacing: 1.5px;
@@ -778,18 +812,40 @@ h1 {
 }
 .socials {
   display: flex;
-  gap: 10px;
+  gap: 14px;
   margin-top: 24px;
 }
 .socials a {
-  width: 39px;
-  height: 39px;
-  border: 1px solid var(--line);
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
   display: grid;
   place-items: center;
+  box-shadow: 0 4px 12px #163e3218;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.socials img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+.social-brand-whatsapp {
+  background: #25d366;
+}
+.social-brand-instagram {
+  background: radial-gradient(circle at 28% 105%, #feda75 0%, #fa7e1e 28%, #d62976 55%, #962fbf 78%, #4f5bd5 100%);
+}
+.social-brand-youtube {
+  background: #fff;
+  border: 1px solid #ff003322;
+}
+.social-brand-youtube img {
+  width: 32px;
+  height: 32px;
 }
 .socials a:hover {
-  background: #e5e7dc;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 16px #163e3228;
 }
 .inquiry-form {
   padding: 36px;
@@ -1146,11 +1202,17 @@ footer {
     font-size: 11px;
   }
   .marquee-set {
-    gap: 35px;
-    padding-right: 35px;
+    gap: 16px;
+    padding-right: 16px;
   }
-  .marquee-set > span {
-    font-size: 22px;
+  .developer-logo {
+    flex-basis: 130px;
+    width: 130px;
+    height: 80px;
+    padding: 10px 12px;
+  }
+  .developer-logo img {
+    height: 60px;
   }
   .strip-note {
     font-size: 8px;

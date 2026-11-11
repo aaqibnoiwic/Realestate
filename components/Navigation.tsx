@@ -33,7 +33,6 @@ export function Navigation() {
           aria-label="Main navigation"
         >
           {[
-            ["Our story", "about"],
             ["Our expertise", "expertise"],
             ["Projects", "projects"],
             ["Our founders", "founders"],
